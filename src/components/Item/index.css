@@ -5,30 +5,30 @@ li {
     line-height: 36px;
     padding: 0 5px;
     border-bottom: 1px solid #ddd;
-  }
-  
-  li label {
+}
+
+li label {
     float: left;
     cursor: pointer;
-  }
-  
-  li label li input {
+}
+
+li label li input {
     vertical-align: middle;
     margin-right: 6px;
     position: relative;
     top: -1px;
-  }
-  
-  li button {
+}
+
+li button {
     float: right;
     display: none;
     margin-top: 3px;
-  }
-  
-  li:before {
+}
+
+li:before {
     content: initial;
-  }
-  
-  li:last-child {
+}
+
+li:last-child {
     border-bottom: none;
-  }
+}

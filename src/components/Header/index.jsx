@@ -1,12 +1,27 @@
 import React, { Component } from "react";
+import {nanoid} from 'nanoid'
 import "./index.css";
 
 export default class Header extends Component {
     handleKeyUp = (event) => {
+        // 解构赋值获取keycode target
+        const {keyCode,target} = event
+        // 判断是否是回车按键
         if (event.keyCode !== 13) {
             return
         }
-        console.log(event.target.value,event.keyCode)
+        // 判断输入是否为空
+        if(target.value.trim() === '') {
+            alert("待办事项名称不能为空！")
+            return
+        }
+        // 准备好一个todo对象
+        const todoObj = {id:nanoid(),name:target.value,done:false}
+        // console.log(event.target.value,event.keyCode)
+        // 将todoObj传递给App
+        this.props.addTodo(todoObj)
+        // 清空输入
+        target.value = ''
     }
     
     render() {
