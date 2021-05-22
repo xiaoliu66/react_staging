@@ -14,7 +14,16 @@ export default class Item extends Component {
     // 勾选、取消todo
     handleCheck = (id) => {
         return (event) => {
-            console.log(id,event.target.checked)
+            // console.log(id,event.target.checked)
+            this.props.updateTodo(id, event.target.checked);
+        };
+    };
+
+    // 删除一个todo的回调
+    handleDelete = (id) => {
+        // console.log("通知app删除", id);
+        if (window.confirm('确定删除吗？')) {
+            this.props.deleteTodo(id);
         }
     };
 
@@ -31,7 +40,11 @@ export default class Item extends Component {
                     <input type="checkbox" defaultChecked={done} onChange={this.handleCheck(id)} />
                     <span>{name}</span>
                 </label>
-                <button className="btn btn-danger" style={{ display: mouse ? "block" : "none" }}>
+                <button
+                    onClick={() => this.handleDelete(id)}
+                    className="btn btn-danger"
+                    style={{ display: mouse ? "block" : "none" }}
+                >
                     删除
                 </button>
             </li>
