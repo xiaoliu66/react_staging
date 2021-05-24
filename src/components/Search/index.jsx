@@ -3,14 +3,20 @@ import React, { Component } from "react";
 
 export default class Search extends Component {
     search = () => {
-        const {value} = this.keyWordElement;
+        const { value } = this.keyWordElement;
+        // 发送请求前通知app更新状态
+        this.props.updateAppState({ isFirst: false });
         // 发送请求
         axios.get(`https://api.github.com/search/users?q=${value}`).then(
-            response => {
-                this.props.saveUsers(response.data.items);
+            (response) => {
+                // 请求成功后通知App更新状态
+                this.props.updateAppState({ isLoading: false, users: response.data.items });
             },
-            error => { console.log('failed')}
-        )
+            (error) => {
+                // 请求失败后通知App更新状态
+                this.props.updateAppState({ isLoading: false, err: error.message });
+            }
+        );
     };
 
     render() {
