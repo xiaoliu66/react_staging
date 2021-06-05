@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { InputNumber } from "antd";
-import "antd/dist/antd.css";
+import Count from './components/Count'
 
 export default class App extends Component {
     onChange = (value) => {
@@ -10,8 +9,7 @@ export default class App extends Component {
     render() {
         return (
             <div>
-                <h2>输入框练习</h2>
-                <InputNumber min={-11} max={10} defaultValue={3} onChange={this.onChange} />
+                <Count/>
             </div>
         );
     }
